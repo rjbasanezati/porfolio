@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Portfolio of Richie John Basañez: computer engineering, public-sector ICT work, training and skills.">
+<title>Richie John Basañez</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root { color-scheme: light; }
+img { max-width: 100%; }
+
+/* Layout: one wide column. Hero pairs a huge condensed name with a device-style status panel; the career is laid out hop by hop like a traceroute, oldest first, ending at the current post. */
+:root {
+  --bg: #ECEFF3;
+  --surface: #F7F9FB;
+  --ink: #111C26;
+  --muted: #4F5D6B;
+  --line: #C9D1D9;
+  --accent: #1B5FD1;
+  --on-accent: #FFFFFF;
+  --font-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0D141B;
+    --surface: #121B24;
+    --ink: #E7EDF3;
+    --muted: #9AA8B5;
+    --line: #263340;
+    --accent: #6D9FFF;
+    --on-accent: #0D141B;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0D141B;
+  --surface: #121B24;
+  --ink: #E7EDF3;
+  --muted: #9AA8B5;
+  --line: #263340;
+  --accent: #6D9FFF;
+  --on-accent: #0D141B;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  padding-block: 1.25rem 4rem;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 68rem; margin-inline: auto; }
+a { color: inherit; text-decoration-color: var(--accent); text-underline-offset: 0.22em; text-decoration-thickness: 1px; }
+a:hover { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+h1, h2, h3, p, dl, dd, ul, ol { margin: 0; }
+section[id] { scroll-margin-top: 1.5rem; }
+
+.mono { font-family: var(--font-mono); }
+
+/* Top bar */
+.top { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.5rem 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--line); }
+.mark { font-family: var(--font-display); font-weight: 800; font-size: 1.6rem; letter-spacing: 0.04em; text-decoration: none; line-height: 1; }
+.top ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.25rem 1.5rem; }
+.top a { font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; text-decoration: none; color: var(--muted); }
+.top a:hover { color: var(--accent); }
+
+main { display: grid; gap: clamp(3.25rem, 7vw, 5.5rem); padding-top: clamp(2.25rem, 6vw, 4.5rem); }
+
+/* Hero */
+.hero { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 2.5rem 3rem; align-items: end; }
+.eyebrow { font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+h1 { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; font-size: clamp(3.6rem, 13vw, 9.25rem); line-height: 0.86; letter-spacing: 0.005em; margin-top: 1rem; text-wrap: balance; }
+h1 span { display: block; }
+h1 .first { color: var(--accent); }
+.lede { margin-top: 1.5rem; max-width: 36rem; font-size: 1.125rem; color: var(--ink); }
+.actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
+.btn { display: inline-block; padding: 0.65rem 1.1rem; border: 1px solid var(--accent); background: var(--accent); color: var(--on-accent); font-weight: 500; text-decoration: none; border-radius: 2px; transition: background-color 0.15s, color 0.15s; }
+.btn:hover { background: transparent; color: var(--accent); }
+.btn.ghost { background: transparent; color: var(--accent); }
+.btn.ghost:hover { background: var(--accent); color: var(--on-accent); }
+
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; }
+.panel-head { display: flex; justify-content: space-between; gap: 1rem; padding: 0.6rem 1rem; border-bottom: 1px solid var(--line); font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+.panel dl { display: grid; }
+.panel .item { display: grid; gap: 0.1rem; padding: 0.8rem 1rem; border-top: 1px solid var(--line); }
+.panel .item:first-child { border-top: 0; }
+.panel dt { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+.panel dd { font-size: 0.97rem; line-height: 1.4; }
+
+/* Effects */
+.hero { position: relative; }
+.hero > div, .hero > aside { position: relative; z-index: 1; }
+.net { position: absolute; left: 0; top: -2rem; width: 100%; height: calc(100% + 4rem); z-index: 0; pointer-events: none; -webkit-mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent); mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent); }
+.term { margin-top: 1.25rem; font-family: var(--font-mono); font-size: 1.05rem; min-height: 1.7em; }
+.term .prompt { color: var(--accent); margin-right: 0.6rem; }
+.caret { display: inline-block; width: 0.6ch; height: 1.1em; margin-left: 2px; background: var(--accent); vertical-align: -0.18em; animation: blink 1.06s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+h1 { cursor: default; }
+.note::before { content: "// "; color: var(--accent); }
+.hop.now .rail::before { animation: ping 2.2s ease-out infinite; }
+@keyframes ping { 0% { box-shadow: 0 0 0 0 var(--accent); } 100% { box-shadow: 0 0 0 0.95rem transparent; } }
+.hop:not(:last-child) .rail::after {
+  width: 2px;
+  background: linear-gradient(to bottom, var(--line) 0, var(--line) 42%, var(--accent) 50%, var(--line) 58%, var(--line) 100%);
+  background-size: 100% 300%;
+  animation: packet 2.4s linear infinite;
+}
+.hop:nth-child(2) .rail::after { animation-delay: -1.2s; }
+@keyframes packet { from { background-position: 0 100%; } to { background-position: 0 0; } }
+.skill { transition: border-color 0.15s; }
+.skill:hover { border-top-color: var(--accent); }
+.skill h3::after { content: "_"; color: var(--accent); opacity: 0; }
+.skill:hover h3::after { opacity: 1; animation: blink 1s steps(1) infinite; }
+
+/* Section heads */
+.sec-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.25rem 1.5rem; padding-bottom: 0.9rem; border-bottom: 1px solid var(--line); margin-bottom: 1.75rem; }
+h2 { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; font-size: clamp(2.2rem, 5vw, 3rem); line-height: 1; letter-spacing: 0.02em; }
+.note { font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+
+/* Experience path */
+.path { list-style: none; padding: 0; display: grid; }
+.hop { display: grid; grid-template-columns: 3.6rem 1rem minmax(0, 1fr); gap: 0 1.1rem; }
+.hop-id { font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); padding-top: 0.3rem; }
+.rail { position: relative; }
+.rail::before { content: ""; position: absolute; left: 50%; top: 0.4rem; width: 0.75rem; height: 0.75rem; transform: translateX(-50%); border-radius: 50%; border: 2px solid var(--accent); background: var(--bg); z-index: 1; }
+.rail::after { content: ""; position: absolute; left: 50%; top: 1.2rem; bottom: 0; width: 1px; transform: translateX(-50%); background: var(--line); }
+.hop:last-child .rail::after { display: none; }
+.hop.now .rail::before { background: var(--accent); }
+.hop-body { padding-bottom: 2.4rem; display: grid; gap: 0.2rem; }
+.hop:last-child .hop-body { padding-bottom: 0; }
+.when { font-family: var(--font-mono); font-size: 0.82rem; color: var(--muted); letter-spacing: 0.02em; }
+.hop h3 { font-size: 1.3rem; font-weight: 600; line-height: 1.3; }
+.org { color: var(--muted); }
+.tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+.tag { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.15rem 0.5rem; border: 1px solid var(--line); border-radius: 2px; color: var(--muted); }
+.tag.hot { border-color: var(--accent); color: var(--accent); }
+.tag.solid { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+
+/* Rows: education and training */
+.rows { list-style: none; padding: 0; }
+.row { display: grid; grid-template-columns: 11rem minmax(0, 1fr) auto; gap: 0.3rem 1.75rem; padding-block: 1.15rem; border-top: 1px solid var(--line); }
+.row:first-child { border-top: 0; padding-top: 0; }
+.row.two { grid-template-columns: 11rem minmax(0, 1fr); }
+.row .when { padding-top: 0.2rem; }
+.row h3 { font-size: 1.08rem; font-weight: 600; line-height: 1.4; }
+.row .by { color: var(--muted); font-size: 0.95rem; }
+.row .hours { font-family: var(--font-mono); font-size: 0.82rem; color: var(--muted); white-space: nowrap; padding-top: 0.2rem; }
+.row ul { list-style: none; padding: 0; margin-top: 0.5rem; display: grid; gap: 0.15rem; }
+.row li { font-size: 0.95rem; }
+.row .tags { margin-top: 0.4rem; }
+
+/* Skills */
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 2rem 2.5rem; }
+.skill { border-top: 3px solid var(--ink); padding-top: 0.8rem; display: grid; gap: 0.4rem; align-content: start; }
+.skill h3 { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; font-size: 2rem; line-height: 1; letter-spacing: 0.02em; }
+.skill p { color: var(--muted); font-size: 0.97rem; }
+.outside { margin-top: 2rem; max-width: 40rem; color: var(--muted); }
+.outside strong { color: var(--ink); font-weight: 600; }
+
+/* Contact */
+.contact { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 2rem 3rem; align-items: start; }
+.email-line { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1rem; }
+.email { font-family: var(--font-mono); font-size: clamp(1.1rem, 3.6vw, 1.7rem); font-weight: 500; overflow-wrap: anywhere; text-decoration: none; }
+.copy { font: inherit; font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.4rem 0.8rem; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 2px; cursor: pointer; }
+.copy:hover { border-color: var(--accent); color: var(--accent); }
+.copy-status { font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent); min-height: 1.2em; margin-top: 0.5rem; }
+.contact-side { display: grid; gap: 0.9rem; color: var(--muted); }
+.contact-side dt { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; }
+.contact-side dd { color: var(--ink); }
+
+footer { margin-top: 4rem; padding-top: 1rem; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 2rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+@media (max-width: 860px) {
+  .hero, .contact { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 720px) {
+  .row, .row.two { grid-template-columns: minmax(0, 1fr); gap: 0.15rem; }
+  .row .when { padding-top: 0; }
+  .row .hours { padding-top: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn, .skill { transition: none; }
+  .caret, .hop.now .rail::before, .skill:hover h3::after { animation: none; }
+  .hop:not(:last-child) .rail::after { animation: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap" id="top">
+  <header class="top">
+    <a class="mark" href="#top" aria-label="Back to top">RJB</a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#training">Training</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="name">
+      <canvas class="net" id="net" aria-hidden="true"></canvas>
+      <div>
+        <p class="eyebrow">Computer Engineering &middot; Panabo City, Davao del Norte</p>
+        <h1 id="name"><span class="first">Richie John</span><span>Basañez</span></h1>
+        <p class="term" aria-label="Computer programming, IoT innovation, network administration"><span class="prompt" aria-hidden="true">&gt;</span><span id="typed" aria-hidden="true">computer programming</span><span class="caret" aria-hidden="true"></span></p>
+        <p class="lede">I studied computer engineering at the University of Southern Mindanao and work across programming, networks and IoT. Today I serve as Administrative Support Staff I at the Agricultural Training Institute, Regional Training Center XI.</p>
+        <div class="actions">
+          <a class="btn" href="#contact">Get in touch</a>
+          <a class="btn ghost" href="#experience">See my path</a>
+        </div>
+      </div>
+
+      <aside class="panel" aria-label="At a glance">
+        <div class="panel-head"><span>profile.json</span><span id="clock" aria-hidden="true">Oct 2026</span></div>
+        <dl>
+          <div class="item"><dt>Current post</dt><dd>Administrative Support Staff I</dd></div>
+          <div class="item"><dt>Agency</dt><dd>Agricultural Training Institute &ndash; Regional Training Center XI (ATI-RTC XI)</dd></div>
+          <div class="item"><dt>Degree</dt><dd>BS Computer Engineering, University of Southern Mindanao</dd></div>
+          <div class="item"><dt>Eligibility</dt><dd>Civil Service, Career Service &middot; rating 80.93</dd></div>
+          <div class="item"><dt>Focus</dt><dd>Programming, IoT innovation, network administration</dd></div>
+        </dl>
+      </aside>
+    </section>
+
+    <section id="experience" aria-labelledby="h-exp">
+      <div class="sec-head">
+        <h2 id="h-exp">Experience</h2>
+        <p class="note">3 stops, oldest first</p>
+      </div>
+      <ol class="path">
+        <li class="hop">
+          <span class="hop-id">Hop 1</span>
+          <span class="rail" aria-hidden="true"></span>
+          <div class="hop-body">
+            <p class="when">Jan 2022 &ndash; Jun 2023</p>
+            <h3>Computer Programmer</h3>
+            <p class="org">Office of the General Services</p>
+            <div class="tags"><span class="tag">Contract of service</span><span class="tag">Government service</span></div>
+          </div>
+        </li>
+        <li class="hop">
+          <span class="hop-id">Hop 2</span>
+          <span class="rail" aria-hidden="true"></span>
+          <div class="hop-body">
+            <p class="when">Jul 5 &ndash; Aug 15, 2024</p>
+            <h3>On-the-Job Trainee</h3>
+            <p class="org">Department of Agrarian Reform &ndash; North Cotabato</p>
+            <div class="tags"><span class="tag">240 hours</span></div>
+          </div>
+        </li>
+        <li class="hop now">
+          <span class="hop-id">Hop 3</span>
+          <span class="rail" aria-hidden="true"></span>
+          <div class="hop-body">
+            <p class="when">Aug 2025 &ndash; Present</p>
+            <h3>Administrative Support Staff I</h3>
+            <p class="org">Agricultural Training Institute &ndash; Regional Training Center XI</p>
+            <div class="tags"><span class="tag solid">Current</span><span class="tag">Contract of service</span><span class="tag">Government service</span></div>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section id="education" aria-labelledby="h-edu">
+      <div class="sec-head">
+        <h2 id="h-edu">Education &amp; Eligibility</h2>
+        <p class="note">Most recent first</p>
+      </div>
+      <ul class="rows">
+        <li class="row two">
+          <p class="when">Mar 2, 2025</p>
+          <div>
+            <h3>Civil Service Eligibility, Career Service</h3>
+            <p class="by">Rating 80.93 &middot; Examined in Kidapawan, North Cotabato</p>
+          </div>
+        </li>
+        <li class="row two">
+          <p class="when">2021 &ndash; 2025</p>
+          <div>
+            <h3>Bachelor of Science in Computer Engineering</h3>
+            <p class="by">University of Southern Mindanao &ndash; Main Campus</p>
+          </div>
+        </li>
+        <li class="row two">
+          <p class="when">2019 &ndash; 2020</p>
+          <div>
+            <h3>Science, Technology and Mathematics</h3>
+            <p class="by">Notre Dame Village National High School</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section id="training" aria-labelledby="h-train">
+      <div class="sec-head">
+        <h2 id="h-train">Training</h2>
+        <p class="note">Courses and programs attended</p>
+      </div>
+      <ul class="rows">
+        <li class="row">
+          <p class="when">Nov 3 &ndash; 14, 2026</p>
+          <div>
+            <h3>TESDA computer systems and networking courses</h3>
+            <ul>
+              <li>Installing and Configuring Computer System</li>
+              <li>Maintaining Computer Systems and Network</li>
+              <li>Setting Up Computer Network</li>
+              <li>Setting Up Computer Server</li>
+            </ul>
+            <div class="tags"><span class="tag hot" id="upcoming-tag" data-end="2026-11-14">Upcoming</span></div>
+          </div>
+          <p class="hours"></p>
+        </li>
+        <li class="row">
+          <p class="when">Sep 21 &ndash; 25, 2026</p>
+          <div>
+            <h3>Training on Basic Agricultural Extension Course</h3>
+            <p class="by">Conducted by ATI-RTC XI</p>
+          </div>
+          <p class="hours">40 hours</p>
+        </li>
+        <li class="row">
+          <p class="when">May 26 &ndash; 28, 2026</p>
+          <div>
+            <h3>Training Course on the Development of IEC Materials for Print</h3>
+            <p class="by">Conducted by ATI-RTC XI</p>
+          </div>
+          <p class="hours">24 hours</p>
+        </li>
+        <li class="row">
+          <p class="when">Oct 5, 2025</p>
+          <div>
+            <h3>CCNA: Introduction to Networks</h3>
+            <p class="by">Conducted by James Serquina</p>
+          </div>
+          <p class="hours">6 hours</p>
+        </li>
+        <li class="row">
+          <p class="when">May 15, 2024</p>
+          <div>
+            <h3>CCNA: Introduction to Cybersecurity</h3>
+            <p class="by">Conducted by Lynn Bloomer</p>
+          </div>
+          <p class="hours">6 hours</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="skills" aria-labelledby="h-skills">
+      <div class="sec-head">
+        <h2 id="h-skills">Skills</h2>
+        <p class="note">Special skills</p>
+      </div>
+      <div class="skills">
+        <div class="skill">
+          <h3>Computer programming</h3>
+          <p>Writing and maintaining software.</p>
+        </div>
+        <div class="skill">
+          <h3>IoT innovation</h3>
+          <p>Connecting devices to software and data.</p>
+        </div>
+        <div class="skill">
+          <h3>Network administration</h3>
+          <p>Setting up, configuring and maintaining networks.</p>
+        </div>
+      </div>
+      <p class="outside"><strong>Outside work:</strong> I play musical instruments and ball sports.</p>
+    </section>
+
+    <section id="contact" aria-labelledby="h-contact">
+      <div class="sec-head">
+        <h2 id="h-contact">Contact</h2>
+        <p class="note">Let's talk</p>
+      </div>
+      <div class="contact">
+        <div>
+          <div class="email-line">
+            <a class="email" id="email" href="mailto:basanezjr46@gmail.com">basanezjr46@gmail.com</a>
+            <button class="copy" id="copy-email" type="button">Copy</button>
+          </div>
+          <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+        </div>
+        <dl class="contact-side">
+          <div><dt>Based in</dt><dd>Panabo City, Davao del Norte</dd></div>
+          <div><dt>References</dt><dd>Available on request</dd></div>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Richie John O. Basañez</span>
+    <span>Updated October 2026</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  // Hide the "Upcoming" tag once the course dates have passed.
+  var tag = document.getElementById('upcoming-tag');
+  if (tag) {
+    var end = new Date(tag.getAttribute('data-end') + 'T23:59:59');
+    if (new Date() > end) { tag.hidden = true; }
+  }
+
+  // Copy the email address; fall back to selecting it when the clipboard is blocked.
+  var btn = document.getElementById('copy-email');
+  var email = document.getElementById('email');
+  var status = document.getElementById('copy-status');
+  function selectEmail() {
+    try {
+      var range = document.createRange();
+      range.selectNodeContents(email);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+    } catch (e) {}
+  }
+  function say(text) {
+    status.textContent = text;
+    setTimeout(function () { status.textContent = ''; }, 2500);
+  }
+  btn.addEventListener('click', function () {
+    var text = email.textContent.trim();
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        say('Copied to clipboard');
+      }, function () {
+        selectEmail();
+        say('Selected. Press Ctrl+C to copy.');
+      });
+    } else {
+      selectEmail();
+      say('Selected. Press Ctrl+C to copy.');
+    }
+  });
+})();
+
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Live clock in the panel header.
+  var clock = document.getElementById('clock');
+  if (clock) {
+    var tick = function () {
+      var d = new Date();
+      clock.textContent = [d.getHours(), d.getMinutes(), d.getSeconds()].map(function (n) {
+        return String(n).padStart(2, '0');
+      }).join(':') + ' local';
+    };
+    tick();
+    setInterval(tick, 1000);
+  }
+
+  // Terminal line: deletes and retypes through the skill list. The full first phrase is in the markup.
+  var typed = document.getElementById('typed');
+  if (typed && !reduce) {
+    var phrases = ['computer programming', 'IoT innovation', 'network administration'];
+    var wait = function (ms) { return new Promise(function (r) { setTimeout(r, ms); }); };
+    (async function loop() {
+      var i = 0;
+      await wait(2600);
+      while (true) {
+        var cur = phrases[i];
+        for (var n = cur.length; n >= 0; n--) { typed.textContent = cur.slice(0, n); await wait(35); }
+        i = (i + 1) % phrases.length;
+        var next = phrases[i];
+        await wait(250);
+        for (var m = 1; m <= next.length; m++) { typed.textContent = next.slice(0, m); await wait(60); }
+        await wait(2200);
+      }
+    })();
+  }
+
+  // Name decodes from random characters on hover or tap.
+  var h1 = document.getElementById('name');
+  if (h1 && !reduce) {
+    var spans = [].slice.call(h1.querySelectorAll('span'));
+    var originals = spans.map(function (s) { return s.textContent; });
+    var glyphs = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    var busy = false;
+    h1.setAttribute('aria-label', originals.join(' '));
+    var scramble = function () {
+      if (busy) return;
+      busy = true;
+      var frame = 0, total = 18;
+      var timer = setInterval(function () {
+        frame++;
+        spans.forEach(function (s, k) {
+          var o = originals[k], out = '';
+          for (var c = 0; c < o.length; c++) {
+            if (o.charAt(c) === ' ' || c < o.length * frame / total) { out += o.charAt(c); }
+            else { out += glyphs.charAt(Math.floor(Math.random() * glyphs.length)); }
+          }
+          s.textContent = out;
+        });
+        if (frame >= total) {
+          clearInterval(timer);
+          spans.forEach(function (s, k) { s.textContent = originals[k]; });
+          busy = false;
+        }
+      }, 40);
+    };
+    h1.addEventListener('pointerenter', scramble);
+    h1.addEventListener('click', scramble);
+  }
+
+  // Network graph behind the hero. Nodes drift, link when close, and reach toward the pointer.
+  var cv = document.getElementById('net');
+  if (cv && cv.getContext) {
+    var ctx = cv.getContext('2d');
+    var w = 0, h = 0, nodes = [], raf = 0, visible = true;
+    var mouse = { x: -1000, y: -1000 };
+    var col = { accent: '#1B5FD1', ink: '#4F5D6B' };
+
+    var readColors = function () {
+      try {
+        var cs = getComputedStyle(document.documentElement);
+        col.accent = cs.getPropertyValue('--accent').trim() || col.accent;
+        col.ink = cs.getPropertyValue('--muted').trim() || col.ink;
+      } catch (e) {}
+      if (reduce) draw();
+    };
+
+    var draw = function () {
+      ctx.clearRect(0, 0, w, h);
+      var maxD = 120, i, j, a, b, dx, dy, d;
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = col.ink;
+      for (i = 0; i < nodes.length; i++) {
+        a = nodes[i];
+        for (j = i + 1; j < nodes.length; j++) {
+          b = nodes[j];
+          dx = a.x - b.x; dy = a.y - b.y; d = dx * dx + dy * dy;
+          if (d < maxD * maxD) {
+            ctx.globalAlpha = (1 - Math.sqrt(d) / maxD) * 0.22;
+            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+          }
+        }
+      }
+      ctx.fillStyle = col.ink;
+      ctx.globalAlpha = 0.45;
+      for (i = 0; i < nodes.length; i++) {
+        ctx.beginPath(); ctx.arc(nodes[i].x, nodes[i].y, 1.6, 0, 6.2832); ctx.fill();
+      }
+      ctx.strokeStyle = col.accent;
+      ctx.fillStyle = col.accent;
+      for (i = 0; i < nodes.length; i++) {
+        a = nodes[i];
+        dx = a.x - mouse.x; dy = a.y - mouse.y; d = Math.sqrt(dx * dx + dy * dy);
+        if (d < 150) {
+          ctx.globalAlpha = (1 - d / 150) * 0.8;
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
+          ctx.beginPath(); ctx.arc(a.x, a.y, 2.4, 0, 6.2832); ctx.fill();
+        }
+      }
+      ctx.globalAlpha = 1;
+    };
+
+    var resize = function () {
+      var r = cv.getBoundingClientRect();
+      w = Math.max(1, r.width); h = Math.max(1, r.height);
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var count = Math.max(18, Math.min(70, Math.round(w * h / 13000)));
+      nodes = [];
+      for (var i = 0; i < count; i++) {
+        nodes.push({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - 0.5) * 0.35, vy: (Math.random() - 0.5) * 0.35 });
+      }
+      draw();
+    };
+
+    var step = function () {
+      for (var i = 0; i < nodes.length; i++) {
+        var n = nodes[i];
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < 0 || n.x > w) n.vx *= -1;
+        if (n.y < 0 || n.y > h) n.vy *= -1;
+      }
+      draw();
+      raf = requestAnimationFrame(step);
+    };
+    var start = function () { if (!reduce && !raf && visible && !document.hidden) raf = requestAnimationFrame(step); };
+    var stop = function () { if (raf) { cancelAnimationFrame(raf); raf = 0; } };
+
+    window.addEventListener('pointermove', function (e) {
+      var r = cv.getBoundingClientRect();
+      mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top;
+      if (reduce) draw();
+    }, { passive: true });
+    document.addEventListener('visibilitychange', function () { if (document.hidden) stop(); else start(); });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        visible = entries[0].isIntersecting;
+        if (visible) start(); else stop();
+      }).observe(cv);
+    }
+    var timer;
+    window.addEventListener('resize', function () { clearTimeout(timer); timer = setTimeout(resize, 150); });
+    try { window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', readColors); } catch (e) {}
+    try { new MutationObserver(readColors).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] }); } catch (e) {}
+
+    readColors();
+    resize();
+    start();
+  }
+})();
+</script>
+</body>
+</html>
